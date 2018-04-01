@@ -1,0 +1,105 @@
+题目要求:
+    中文翻译:
+    给定两个字符串s1和s2，我们想要可视化两个字符串有多不同。我们只会考虑小写字母（a到z）。
+    先让我们计算s1和s2中每个小写字母的频率。
+
+    s1 =“A aaaa bb c”
+
+    s2 =“＆aaa bbb c d”
+
+    s1有4'a'，2'b'，1'c'
+
+    s2具有3'a'，3'b'，1'c'，1'd'
+
+    所以s1和s2中'a'的最大值是s1中的4; 'b'的最大值是s2中的3。在下面，我们不会考虑他们出现的最大值小于或等于1的字母。
+
+    我们可以通过以下字符串恢复s1和s2之间的差异：“1：aaaa / 2：bbb”，其中1：1：aaaa表示字符串s1和aaaa，因为a的最大值为4.以相同方式2：bbb代表字符串s2和bbb，因为b的最大值是3。
+
+    其任务是生成一个字符串，其中每个s1或s2的小写字母出现次数最多为最大值，如果该最大值严格大于1;这些字母将以它们以最大值出现的字符串的数字作为前缀：。如果最大值在s1以及s2中，则前缀为= :.
+
+    在结果中，子字符串（子字符串例如2：nnnnn或1：hhh;它包含前缀）将按照它们的长度递减顺序，并且当它们具有相同的长度时按升序字典顺序排序（字母和数字 - 更多按码点精确排序）;不同的组将用'/'分隔。参见示例和“示例测试”。
+
+    希望其他例子可以使这个更清楚。
+
+    s1 =“我的朋友＆保罗有沉重的帽子！＆”
+    s2 =“我的朋友约翰有很多朋友”
+    混合（s1，s2）→2：nnnnn / 1：aaaa / 1：hhh / 2：mmm / 2：yyy / 2：dd / 2：ff / 2：ii / 2：rr / = ee / =：ss”的
+
+    s1 =“mmmmm mnnnnn y＆friend＆Paul重帽子＆＆”
+    s2 =“我的朋友有很多朋友可以和我聊天”
+    混合（s1，s2）→1：mmmmmm / =：nnnnnn / 1：aaaa / 1：hhh / 2：yyy / 2：dd / 2：ff / 2：ii / 2：rr / = ee / =：ss”的
+
+    s1 =“孩子们在家吗？aaaaa fffff”
+    s2 =“是的，他们在这里！aaaaa fffff”
+    混合（s1，s2） - >“=：aaaaaa / 2：eeeee / =：fffff / 1：tt / 2：rr / =：hh”
+    请注意Swift，R
+
+    前缀=：被替换为E：
+
+    s1 =“mmmmm mnnnnn y＆friend＆Paul重帽子＆＆”
+    s2 =“我的朋友有很多朋友可以和我聊天”
+    混合（s1，s2）→1：mmmmmm / =：nnnnnn / 1：aaaa / 1：hhh / 2：yyy / 2：dd / 2：ff / 2：ii / 2：rr / E：ee / E：SS”
+
+
+
+附上原英文题目
+    Given two strings s1 and s2, we want to visualize how different the two strings are. We will only take into account the lowercase letters (a to z). First let us count the frequency of each lowercase letters in s1 and s2.
+
+    s1 = "A aaaa bb c"
+
+    s2 = "& aaa bbb c d"
+
+    s1 has 4 'a', 2 'b', 1 'c'
+
+    s2 has 3 'a', 3 'b', 1 'c', 1 'd'
+
+    So the maximum for 'a' in s1 and s2 is 4 from s1; the maximum for 'b' is 3 from s2. In the following we will not consider letters when the maximum of their occurrences is less than or equal to 1.
+
+    We can resume the differences between s1 and s2 in the following string: "1:aaaa/2:bbb" where 1 in 1:aaaa stands for string s1 and aaaa because the maximum for a is 4. In the same manner 2:bbb stands for string s2 and bbb because the maximum for b is 3.
+
+    The task is to produce a string in which each lowercase letters of s1 or s2 appears as many times as its maximum if this maximum is strictly greater than 1; these letters will be prefixed by the number of the string where they appear with their maximum value and :. If the maximum is in s1 as well as in s2 the prefix is =:.
+
+    In the result, substrings (a substring is for example 2:nnnnn or 1:hhh; it contains the prefix) will be in decreasing order of their length and when they have the same length sorted in ascending lexicographic order (letters and digits - more precisely sorted by codepoint); the different groups will be separated by '/'. See examples and "Example Tests".
+
+    Hopefully other examples can make this clearer.
+
+    s1 = "my&friend&Paul has heavy hats! &"
+    s2 = "my friend John has many many friends &"
+    mix(s1, s2) --> "2:nnnnn/1:aaaa/1:hhh/2:mmm/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss"
+
+    s1 = "mmmmm m nnnnn y&friend&Paul has heavy hats! &"
+    s2 = "my frie n d Joh n has ma n y ma n y frie n ds n&"
+    mix(s1, s2) --> "1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/=:ee/=:ss"
+
+    s1="Are the kids at home? aaaaa fffff"
+    s2="Yes they are here! aaaaa fffff"
+    mix(s1, s2) --> "=:aaaaaa/2:eeeee/=:fffff/1:tt/2:rr/=:hh"
+    Note for Swift, R
+
+    The prefix =: is replaced by E:
+
+    s1 = "mmmmm m nnnnn y&friend&Paul has heavy hats! &"
+    s2 = "my frie n d Joh n has ma n y ma n y frie n ds n&"
+    mix(s1, s2) --> "1:mmmmmm/=:nnnnnn/1:aaaa/1:hhh/2:yyy/2:dd/2:ff/2:ii/2:rr/E:ee/E:ss"
+
+解题思路:
+     1、首先将s1 s2写成字典的形式s1_dict  s2_dict  (这里的字典只包括出现两次以上的字符)
+     2、得到字典的交集key_value_dict，以及去掉交集后的s1_dict、s2_dict
+     3、进行排序得到元组
+     2、最后利用while循环，得到output
+        备注: 这里del函数运用很巧妙   王婆卖瓜  自卖自夸
+              为了避免删除后一个元素都没有
+              这里给三个字典又赋给了新的键
+                  为了避免这个键影响排序，所以值都小于2，此处均取1
+                  s1_dict['X'] = 1
+                  s2_dict['Y'] = 1
+                  key_value_dict['Z'] = 1
+感悟:
+     python的sorted排序真强大！！！
+     善于运用数据类型
+
+最大感慨:
+     花了我挺长时间的！！！
+     加油加油加油！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！！
+     不过代码待优化。。。
+     
